@@ -104,5 +104,3 @@ sudo apt install git make cmake libxxf86vm1 libxrandr2 libxinerama1 libxcursor1 
 2. Open **CMake GUI** → set *Where is the source code* to the cloned directory, *Where to build the binaries* to a new `build/` subfolder
 3. Click **Configure**, select your Visual Studio version, then **Generate** and **Open Project**
 4. In Visual Studio, set the desired startup project (`Exercise1_2`, `Exercise3`, `Exercise4`, or `Exercise5`) and build
-
-Pre-compiled Windows binaries are available in the `solution/win/` directory of the `dev` branch.
