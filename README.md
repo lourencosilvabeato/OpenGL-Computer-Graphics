@@ -76,31 +76,73 @@ computer-graphics/
 
 ### Prerequisites
 
-- CMake 3.x or newer
-- C++17-capable compiler (GCC 8+, MSVC 2019+, or Clang 7+)
-- OpenGL 4.x capable GPU and drivers
+- **CMake** 3.x or newer
+- **C++17 compiler** — MSVC 2019+ (Windows), GCC 8+ (Linux), or Clang 7+ (macOS)
+- **OpenGL 4.x** capable GPU and up-to-date drivers
 
-### Build on Linux / macOS
+> **Windows:** install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) (free) and during setup select the **"Desktop development with C++"** workload — this includes MSVC, CMake, and all required build tools.
+
+---
+
+### 1. Clone
 
 ```bash
-git clone --recursive https://github.com/lourencosilvabeato/computer-graphics.git
-cd computer-graphics
+git clone --recursive https://github.com/lourencosilvabeato/OpenGL-Computer-Graphics.git
+cd OpenGL-Computer-Graphics
+```
+
+The `--recursive` flag is required to pull in the NanoGUI and OpenMesh submodules.
+
+---
+
+### 2. Build
+
+**Linux / macOS**
+```bash
 mkdir build && cd build
 cmake ..
 make
-# Compiled binaries appear in build/bin/
 ```
 
-**Missing dependencies on Debian/Ubuntu:**
+**Windows (Visual Studio)**
+1. Open **CMake GUI**
+2. Set *Where is the source code* → the cloned folder
+3. Set *Where to build the binaries* → a new `build/` subfolder inside it
+4. Click **Configure** → select your Visual Studio version → click **Generate** → **Open Project**
+5. In Visual Studio, right-click the desired project in the Solution Explorer and select **Set as Startup Project**, then press **F5** to build and run
+
+---
+
+### 3. Run
+
+All executables are built into `build/bin/`. **Always run them from the project root** so they can locate the `data/` folder (3D models) and shader files.
+
+**Linux / macOS**
+```bash
+# From the project root:
+./build/bin/Exercise1_2   # Mesh processing
+./build/bin/Exercise3     # Julia fractal
+./build/bin/Exercise4     # Terrain rendering
+./build/bin/Exercise5     # Collision detection
+```
+
+**Windows**
+```
+# Open a terminal in the project root, then:
+.\build\bin\Exercise1_2.exe
+.\build\bin\Exercise3.exe
+.\build\bin\Exercise4.exe
+.\build\bin\Exercise5.exe
+```
+
+Once open, use the control panel on the left to interact with each exercise. For mesh exercises (1+2 and 5), click **Load Mesh** to open a `.obj` file from the `data/` folder, or **Create Primitive** to generate a shape directly.
+
+---
+
+### Linux dependencies (Debian/Ubuntu)
+
 ```bash
 sudo apt install git make cmake libxxf86vm1 libxrandr2 libxinerama1 libxcursor1 \
   libx11-6 libc6 libstdc++6 libgcc-8-dev libxext6 libxrender1 libxfixes3 \
   libxcb1 libxau6 libxdmcp6 libbsd0
 ```
-
-### Build on Windows (Visual Studio)
-
-1. Clone the repository with `--recursive`
-2. Open **CMake GUI** → set *Where is the source code* to the cloned directory, *Where to build the binaries* to a new `build/` subfolder
-3. Click **Configure**, select your Visual Studio version, then **Generate** and **Open Project**
-4. In Visual Studio, set the desired startup project (`Exercise1_2`, `Exercise3`, `Exercise4`, or `Exercise5`) and build
